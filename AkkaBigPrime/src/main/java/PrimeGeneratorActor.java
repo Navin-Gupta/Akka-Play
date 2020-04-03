@@ -91,6 +91,10 @@ public class PrimeGeneratorActor extends AbstractBehavior<PrimeGeneratorActor.Co
                         // generate big prime
                         BigInteger bigInteger = new BigInteger(2000, new Random());
                         this.prime = bigInteger.nextProbablePrime();
+
+                        // add a log message
+                        // get a log reference from context
+                        getContext().getLog().info("Success");
                         // send the big Prime back to guardian
                         command.getSender().tell(new GuardianActor.ResultCommand(prime));
                     }
